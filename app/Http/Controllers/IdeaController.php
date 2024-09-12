@@ -19,7 +19,7 @@ class IdeaController extends Controller
             'content' => 'required|min:3|max:240'
         ]);
 
-        //$validated['user_id'] = auth()->id();
+        $validated['user_id'] = auth()->id();
 
         Idea::create($validated);
 
