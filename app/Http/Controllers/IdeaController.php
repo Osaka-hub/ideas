@@ -30,6 +30,11 @@ class IdeaController extends Controller
 
     public function destroy(Idea $idea){
         // where id=1;
+
+        if(auth()->id() !== $idea->user_id){
+            abort(404);
+        }
+
         $idea->delete();
 
         return redirect()->route('dashboard')->with('success','Idea deleted successfully !');
@@ -37,12 +42,21 @@ class IdeaController extends Controller
     }
 
     public function edit(Idea $idea){
+
+        if(auth()->id() !== $idea->user_id){
+            abort(404);
+        }
+
         $editing= true;
 
         return view('ideas.show',compact('idea', 'editing'));
     }
 
     public function update(Idea $idea){
+
+        if(auth()->id() !== $idea->user_id){
+            abort(404);
+        }
 
         $validated = request()->validate([
             'content' => 'required|min:3|max:240'
