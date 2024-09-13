@@ -42,6 +42,8 @@ Route::group([ 'prefix'=>'ideas/' ], function () {
 
 });
 
+Route::get('profile', [UserController::class,'profile'])->middleware('auth')->name('profile');
+
 Route::resource('users', UserController::class)->only('show','edit','update')->middleware('auth');
 
 
