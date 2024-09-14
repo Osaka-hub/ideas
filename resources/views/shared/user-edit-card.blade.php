@@ -6,7 +6,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <img style="width:150px" class="me-3 avatar-sm rounded-circle"
-                    src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar">
+                    src="{{ $user->getImageURL() }}" alt="Mario Avatar">
                 <div>
                         <input name="name" value="{{ $user->name }}" type="text" class="form-control">
                         @error('name')
