@@ -22,7 +22,7 @@ class FeedController extends Controller
 
         // where content like %test%
         if(request()->has('search')){
-            $ideas = $ideas->where('content','like', '%' . request()->get('search','') . '%');
+            $ideas = $ideas->search(request('search',''));
         }
 
         return view('dashboard', [
